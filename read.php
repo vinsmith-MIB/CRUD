@@ -37,7 +37,7 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM presensi')->fetchColumn();
                     <td><?= $contact['nama'] ?></td>
                     <td><?= $contact['email'] ?></td>
                     <td><?= $contact['kehadiran'] ?></td>
-                    <td><button id="tampilkan">tampilkan <i class="fa-solid fa-arrow-up-right-from-square"></i></button></td>
+                    <td><button id="tampilkan" onclick="tampilkangambar(`<?php echo 'uploads/' . $contact['bukti_kehadiran']?>`)">tampilkan <i class="fa-solid fa-arrow-up-right-from-square"></i></button></td>
                     <td><?= $contact['waktu_ditambahkan'] ?></td>
                     <td class="actions">
                         <a href="update.php?nim=<?= $contact['nim'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
@@ -45,12 +45,12 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM presensi')->fetchColumn();
                         <div id="id01" class="modal">
                             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
                             <form class="modal-content" action="delete.php" method="get">
-                            <input type="hidden" name="nim" value="<?= $contact['nim'] ?>">
-                            <input type="hidden" name="command" value="delete">
+                                <input type="hidden" name="nim" value="<?= $contact['nim'] ?>">
+                                <input type="hidden" name="command" value="delete">
                                 <div class="container">
-                                    <h1>Delete Data #<?= $contact['nim']?></h1>
+                                    <h1>Delete Data #<?= $contact['nim'] ?></h1>
                                     <p>Apa anda yakin menghapus ingin menghapus data tersebut?</p>
-                        
+
                                     <div class="clearfix">
                                         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                                         <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
@@ -65,22 +65,19 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM presensi')->fetchColumn();
     </table>
 </div>
 <script>
-    var button = document.getElementById("tampilkan");
-    var imageUrl = "<?php echo 'uploads/' . $contact['bukti_kehadiran']; ?>";
-
-    let container;
-
-    button.addEventListener("click", () => {
+    let container = document.createElement("div");
+    function tampilkangambar(imageUrl) {
         let body = document.getElementsByTagName("body")[0];
-        container = document.createElement("div");
         container.id = "container-image";
         container.onclick = removeimage;
         body.appendChild(container);
         container.innerHTML = "<img class='pop-image' src='" + imageUrl + "' alt='Gambar' />";
-    });
+    }
 
     function removeimage() {
+        console.log(container);
         container.remove();
+        
     }
     // Get the modal
     var modal = document.getElementById('id01');
