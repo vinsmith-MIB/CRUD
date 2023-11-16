@@ -13,14 +13,21 @@ if (isset($_GET['nim'])) {
 
         $uploadDir = 'uploads/'; // Direktori tempat menyimpan gambar
         $uploadFile = $uploadDir . basename($_FILES['bukti-kehadiran']['name']);
-
+    
         // Memeriksa apakah file gambar yang diunggah adalah gambar yang valid
         $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
         $allowedExtensions = array('jpg', 'jpeg', 'png');
-
+    
         if (!in_array($imageFileType, $allowedExtensions)) {
             echo "Hanya gambar dengan format JPG, JPEG, PNG, dan GIF yang diizinkan.";
+        } else {
+            if (move_uploaded_file($_FILES['bukti-kehadiran']['tmp_name'], $uploadFile)) {
+                // Selanjutnya, Anda dapat menyimpan $uploadFile ke database atau melakukan tindakan lain yang diperlukan.
+            } else {
+                echo "Gagal mengunggah gambar.";
+            }
         }
+    
         $buktiKehadiran = isset($_FILES['bukti-kehadiran']['name']) ? $_FILES['bukti-kehadiran']['name'] : '';
         date_default_timezone_set('Asia/Jakarta');
         $created = new DateTime();

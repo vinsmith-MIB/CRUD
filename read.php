@@ -14,7 +14,7 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM presensi')->fetchColumn();
 ?>
 
 <?= template_header('Admin', 'read.css') ?>
-
+<br>
 <div class="content read">
     <h2>Read Presensi</h2>
     <a href="index.php" class="create-contact">Create Presensi</a>
@@ -75,7 +75,6 @@ $num_contacts = $pdo->query('SELECT COUNT(*) FROM presensi')->fetchColumn();
     }
 
     function removeimage() {
-        console.log(container);
         container.remove();
         
     }

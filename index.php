@@ -48,7 +48,7 @@ if (!empty($_POST)) {
       <header>
         <h1 id="title">ABSENSI WEBINAR</h1>
         <p id="description">
-          Terimakasih telah meluangkan waktu untuk mengisi survey yang kami
+          Terimakasih telah meluangkan waktu untuk mengikuti webinar yang kami
           berikan
         </p>
       </header>
