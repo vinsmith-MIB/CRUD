@@ -14,7 +14,7 @@ body::before {
   width:100%;
 }
 body {
-  padding: 3rem 0;
+  padding: 0 0 3rem 0;
   font-family: 'Poppins', sans-serif;
   color: #ffffff;
   font-size: 1rem;

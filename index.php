@@ -23,7 +23,6 @@ if (!empty($_POST)) {
         echo "Hanya gambar dengan format JPG, JPEG, PNG, dan GIF yang diizinkan.";
     } else {
         if (move_uploaded_file($_FILES['bukti-kehadiran']['tmp_name'], $uploadFile)) {
-            echo "Gambar berhasil diunggah.";
             // Selanjutnya, Anda dapat menyimpan $uploadFile ke database atau melakukan tindakan lain yang diperlukan.
         } else {
             echo "Gagal mengunggah gambar.";
